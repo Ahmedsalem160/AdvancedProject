@@ -105,7 +105,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    {{__('messages.Add Your Offer')}}
+                    {{__('messages.UpdateYourOffer')}}
                 </div>
                 @if(Session::has('success'))
                 <div class="alert alert-success" role="alert">
@@ -114,12 +114,12 @@
                 @endif
                 <br>
                 <!--Form -->
-                <form method="post" action="{{route('offers.store')}}" enctype="multipart/form-data">
+                <form method="post" action="{{route('offers.update',$offer->id)}}">
                     @csrf
                     <!-- name_ar  -->
                     <div class="form-group">
                         <label for="name">{{__('messages.Name_ar')}}</label>
-                        <input type="text" name="name_ar" class="form-control"  placeholder="{{__('messages.Enter Name_ar')}}">
+                        <input type="text" name="name_ar" value="{{$offer->name_ar}}" class="form-control"  placeholder="{{__('messages.Enter Name_ar')}}">
                         @error('name_ar')
                             <small class="form-text text-danger">{{$message}}</small>
                         @enderror
@@ -127,7 +127,7 @@
                     <!-- name_en  -->
                     <div class="form-group">
                         <label for="name">{{__('messages.Name_en')}}</label>
-                        <input type="text" name="name_en" class="form-control"  placeholder="{{__('messages.Enter Name_en')}}">
+                        <input type="text" name="name_en" value="{{$offer->name_en}}" class="form-control"  placeholder="{{__('messages.Enter Name_en')}}">
                         @error('name_en')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
@@ -135,7 +135,7 @@
 
                     <div class="form-group">
                         <label for="Price">{{__('messages.OfferPrice')}}</label>
-                        <input type="text" name="price" class="form-control" placeholder="{{__('messages.OfferPrice')}}">
+                        <input type="text" name="price" value="{{$offer->price}}" class="form-control" placeholder="{{__('messages.OfferPrice')}}">
                         @error('price')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
@@ -143,7 +143,7 @@
                     <!-- details_ar  -->
                     <div class="form-group">
                         <label for="Details">{{__('messages.details_ar')}}</label>
-                        <input type="text" name="details_ar" class="form-control" placeholder="{{__('messages.details_ar')}}">
+                        <input type="text" name="details_ar" value="{{$offer->details_ar}}" class="form-control" placeholder="{{__('messages.details_ar')}}">
                         @error('details_ar')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
@@ -151,17 +151,8 @@
                     <!-- details_en  -->
                     <div class="form-group">
                         <label for="Details">{{__('messages.details_en')}}</label>
-                        <input type="text" name="details_en" class="form-control" placeholder="{{__('messages.details_en')}}">
+                        <input type="text" name="details_en" value="{{$offer->details_en}}" class="form-control" placeholder="{{__('messages.details_en')}}">
                         @error('details_en')
-                        <small class="form-text text-danger">{{$message}}</small>
-                        @enderror
-                    </div>
-
-                    <!-- Photo  -->
-                    <div class="form-group">
-                        <label for="Photo">{{__('messages.AddPhoto')}}</label>
-                        <input type="file" name="photo" class="form-control" >
-                        @error('photo')
                         <small class="form-text text-danger">{{$message}}</small>
                         @enderror
                     </div>
