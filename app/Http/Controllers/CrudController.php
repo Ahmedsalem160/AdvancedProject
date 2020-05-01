@@ -4,12 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\OfferRequest;
 use App\Model\Offer;
+use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class CrudController extends Controller
 {
+    use OfferTrait;
+
     public function __construct()
     {
 
@@ -52,11 +55,8 @@ class CrudController extends Controller
             return redirect()->back()->withInputs($request->all())->withErrors($validator);
         }*/
         //Adding Photo
-            $file_extention = $request->photo->getClientOriginalExtension();
-            $file_name = time().'.'.$file_extention;
-            $path = 'images/offers';
-            $request->photo->move($path,$file_name);
-
+            //in Traits
+        $file_name=$this->SaveImage($request->photo,'images/offers');
         //insert
         Offer::create([
             'photo'=>$file_name,
