@@ -98,6 +98,15 @@ class CrudController extends Controller
         return view('offers.edit',compact('offer'));
     }
 
+    public function deleteOffer($offer_id){
+        $offer=Offer::find($offer_id);
+        if (!$offer)
+            return redirect()->back()->with(['error'=>'BUG']);
+        $offer->delete();
+        return redirect()->route('offers/delete','$offer_id');
+
+    }
+
     public function updateOffer(OfferRequest $request,$offer_id){
         //validation
         //Update

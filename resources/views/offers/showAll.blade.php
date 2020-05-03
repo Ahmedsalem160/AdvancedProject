@@ -108,7 +108,8 @@
                 <th scope="col">{{__('messages.Name_ar')}}</th>
                 <th scope="col">{{__('messages.details_ar')}}</th>
                 <th scope="col">{{__('messages.OfferPrice')}}</th>
-                <th scope="col">{{__('messages.operations')}}</th>
+                <th scope="col">{{__('messages.Image')}}</th>
+                <th scope="col">{{__('messages.Operations')}}</th>
             </tr>
             </thead>
             <tbody>
@@ -118,8 +119,13 @@
                 <td>{{$offer->name}}</td>
                 <td>{{$offer->details}}</td>
                 <td>{{$offer->price}}</td>
+                <td><img style="width: 90px; height: 90px;" src="{{asset('images/offers/'.$offer->photo)}}"></td>
                 <td>
-                    <a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success"> {{__('messages.edit')}}</a>
+                    <a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success">
+                        {{__('messages.edit')}}</a>
+
+                    <a href="{{route('offers.delete',$offer->id)}}" class="btn btn-danger">
+                        {{__('messages.Delete')}}</a>
                 </td>
             </tr>
             @endforeach

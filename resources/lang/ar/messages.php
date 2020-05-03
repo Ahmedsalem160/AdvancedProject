@@ -28,6 +28,7 @@ return [
     'edit'=>'تعديل',
     'Delete'=>'مسح',
     'Operations'=>'العمليات',
+    'Image'=>'الصوره',
     //Update page
     'UpdateYourOffer'=>'تعديل العرض',
     //videoPage

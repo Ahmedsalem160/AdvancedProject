@@ -30,6 +30,7 @@ return [
     'edit'=>'edit',
     'Delete'=>'Delete',
     'Operations'=>'operations',
+    'Image'=>'Image',
     //Update page
     'UpdateYourOffer'=>'Update Your Offer',
     //videoPage
