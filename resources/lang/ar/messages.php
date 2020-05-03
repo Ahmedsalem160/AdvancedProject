@@ -30,6 +30,8 @@ return [
     'Operations'=>'العمليات',
     //Update page
     'UpdateYourOffer'=>'تعديل العرض',
+    //videoPage
+    'videoViewer'=>'عدد المشاهدين',
 
 
 

@@ -39,6 +39,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
 
         Route::get('showAllOffers','CrudController@showAll');
     });
+
+    Route::get('youtube','CrudController@getVideo');
 });
 
 

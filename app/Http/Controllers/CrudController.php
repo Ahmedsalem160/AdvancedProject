@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\VideoViewer;
 use App\Http\Requests\OfferRequest;
 use App\Model\Offer;
+use App\Model\Video;
 use App\Traits\OfferTrait;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -15,7 +17,8 @@ class CrudController extends Controller
 
     public function __construct()
     {
-
+        // except   ,   only
+        $this->middleware('auth',['only'=>['getVideo']]);
     }
 
     public function getOffers()
@@ -102,6 +105,13 @@ class CrudController extends Controller
         $offer->update($request->all());
         return redirect()->back()->with(['success'=>'Update Done successfully']);
 
+    }
+
+    public function getVideo(){
+        $video=Video::first();
+        //return $video;
+        event(new VideoViewer($video));// fire Event
+        return view('video')->with('video',$video);
     }
 }
 

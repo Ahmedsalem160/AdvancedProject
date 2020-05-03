@@ -32,5 +32,7 @@ return [
     'Operations'=>'operations',
     //Update page
     'UpdateYourOffer'=>'Update Your Offer',
+    //videoPage
+    'videoViewer'=>'videoViewer',
 
 ];
