@@ -66,5 +66,29 @@ class OfferController extends Controller
         $offer->delete();
     }
 
+    public function editOffer(Request $request){
+        Offer::findOrFail($request->offer_id);
+        $offer = Offer::select('id','name_ar','name_en','details_ar','details_en','price')->find($request->offer_id);
+        return view('ajaxOffers.edit',compact('offer'));
+    }
+
+    public function updateOffer(Request $request){
+        $offer = Offer::findOrFail($request->offer_id);
+        if (!$offer){
+            return response()->json([
+                'status' => false,
+                'msg' => 'Deleting Faild ',
+            ]);
+        }else{
+            return response()->json([
+                'status' => true,
+                'msg' => 'Updating Done Successfully',
+                'id' => $request->id,
+            ]);
+        }
+        $offer->update($request->all());
+
+    }
+
 
 }

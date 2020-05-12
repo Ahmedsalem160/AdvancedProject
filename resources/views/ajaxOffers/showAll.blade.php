@@ -23,7 +23,7 @@
                 <td>{{$offer->price}}</td>
                 <td><img style="width: 90px; height: 90px;" src="{{asset('images/offers/'.$offer->photo)}}"></td>
                 <td>
-                    <a href="{{url('offers/edit/'.$offer -> id)}}" class="btn btn-success">
+                    <a href="{{url('ajax-offer/edit/'.$offer -> id)}}" class="btn btn-success">
                         {{__('messages.edit')}}</a>
 
                     <a href="{{route('offers.delete',$offer->id)}}" class="btn btn-danger">
