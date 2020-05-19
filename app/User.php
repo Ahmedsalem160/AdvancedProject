@@ -16,7 +16,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password','expire'
+        'name', 'email', 'password','expire','Age','mobile'
     ];
 
     /**
@@ -36,4 +36,9 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    ######################## Begin Relations ###############################
+    public function phone(){// forign key cannot be written
+        return $this->hasOne('App\Model\Phone','user_id');
+    }
+    ######################## END Relations #################################
 }
