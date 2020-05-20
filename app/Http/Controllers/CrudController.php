@@ -89,7 +89,6 @@ class CrudController extends Controller
                     'details_'.LaravelLocalization::getCurrentLocale() . ' as details',
                     'price')->get();
         return view('offers.showAll',compact('offers'));
-
     }
 
     public function editOffer($offer_id){ // I can recieve the id with any varname

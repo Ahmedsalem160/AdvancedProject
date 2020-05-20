@@ -29,7 +29,7 @@
                                 <td>{{$doctor->title}}</td>
 
                                 <td>
-                                    <a href="#" class="btn btn-success">Wait</a>
+                                    <a href="{{ route('show.doctor.services',$doctor->id) }}" class="btn btn-success">Show Services</a>
 
                                 </td>
                             </tr>

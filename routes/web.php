@@ -91,5 +91,12 @@ Route::group(['namespace'=>'Relations'],function (){
     Route::get('hospital-not-has-doctor','hasManyController@hospitalNotHasDoctor');
     Route::get('hospital-has-doctor-male','hasManyController@hospitalHasDoctorMale');
 ############################ END one To Many Relations  ###########################
+
+############################Begin Many To Many Relations  ##########################
+    Route::get('doctors-services','ManyToManyController@getDoctorServices');
+    Route::get('services-doctors','ManyToManyController@getServiceDoctors');
+    Route::get('show-doctor-services/{doctor_id}','ManyToManyController@showDoctorServices')->name('show.doctor.services');
+    Route::post('AddServices-to-doctor','ManyToManyController@saveServicesToDotor')->name('save.services.ToDoctor');
+############################ END Many To Many Relations  ###########################
 });
 ################################## END Relation Routes ######################################

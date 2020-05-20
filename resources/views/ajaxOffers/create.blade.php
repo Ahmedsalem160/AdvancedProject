@@ -24,50 +24,47 @@
                         <div class="form-group">
                             <label for="name">{{__('messages.Name_ar')}}</label>
                             <input type="text" name="name_ar" class="form-control"  placeholder="{{__('messages.Enter Name_ar')}}">
-                            @error('name_ar')
-                                <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
+                                <small id="name_ar_error" class="form-text text-danger"></small>
                         </div>
                         <!-- name_en  -->
                         <div class="form-group">
                             <label for="name">{{__('messages.Name_en')}}</label>
                             <input type="text" name="name_en" class="form-control"  placeholder="{{__('messages.Enter Name_en')}}">
-                            @error('name_en')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
+                            <small id="name_en_error" class="form-text text-danger"></small>
+
                         </div>
 
                         <div class="form-group">
                             <label for="Price">{{__('messages.OfferPrice')}}</label>
                             <input type="text" name="price" class="form-control" placeholder="{{__('messages.OfferPrice')}}">
-                            @error('price')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
+
+                            <small id="price_error" class="form-text text-danger"></small>
+
                         </div>
                         <!-- details_ar  -->
                         <div class="form-group">
                             <label for="Details">{{__('messages.details_ar')}}</label>
                             <input type="text" name="details_ar" class="form-control" placeholder="{{__('messages.details_ar')}}">
-                            @error('details_ar')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
+
+                            <small id="details_ar_error" class="form-text text-danger"></small>
+
                         </div>
                         <!-- details_en  -->
                         <div class="form-group">
                             <label for="Details">{{__('messages.details_en')}}</label>
                             <input type="text" name="details_en" class="form-control" placeholder="{{__('messages.details_en')}}">
-                            @error('details_en')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
+
+                            <small id="details_en_error" class="form-text text-danger"></small>
+
                         </div>
 
                         <!-- Photo  -->
                         <div class="form-group">
                             <label for="Photo">{{__('messages.AddPhoto')}}</label>
                             <input type="file" name="photo" class="form-control" >
-                            @error('photo')
-                            <small class="form-text text-danger">{{$message}}</small>
-                            @enderror
+
+                            <small id="photo_error" class="form-text text-danger"></small>
+
                         </div>
 
                         <button id="save_offer" class="btn btn-primary">{{__('messages.Save IT')}}</button>
@@ -84,6 +81,13 @@
 @section('script')
 <script>
     $(document).on('click','#save_offer',function (e) {
+        //To Reset the errors in the form
+        $('#name_ar_error').text('');
+        $('#name_en_error').text('');
+        $('#price_error').text('');
+        $('#details_ar_error').text('');
+        $('#details_en_error').text('');
+        $('#photo_error').text('');
         e.preventDefault();
         //To get all responses from the Form
         var formData = new FormData($('#offerForm')[0]);
@@ -101,6 +105,10 @@
                     alert(data.msg);
 
             },error:function (reject) {
+                var response = $.parseJSON(reject.responseText);
+                $.each(response.errors, function (key, val) {
+                    $("#" + key + "_error").text(val[0]);
+                });
 
             }
 

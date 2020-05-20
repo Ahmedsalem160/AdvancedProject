@@ -29,6 +29,7 @@ class OfferRequest extends FormRequest
             'price'=>'required|numeric',
             'details_ar'=>'required|max:200',
             'details_en'=>'required|max:200',
+            'photo'=>'required'
         ];
     }
     public function messages(){
@@ -45,6 +46,7 @@ class OfferRequest extends FormRequest
             'details_ar.max'=>__('messages.detailsMax'),
             'details_en.required'=>__('messages.detailsRequired'),
             'details_en.max'=>__('messages.detailsMax'),
+            'photo.required'=>'Upload the Photo'
         ];
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OfferRequest;
 use App\Model\Offer;
 use App\Traits\OfferTrait;
 use http\Env\Response;
@@ -15,7 +16,7 @@ class OfferController extends Controller
         return view('ajaxOffers.create');
     }
 
-    public  function store(Request $request){
+    public  function store(OfferRequest $request){
         $file_name=$this->SaveImage($request->photo,'images/offers');
         //insert
         $createOffer=Offer::create([
