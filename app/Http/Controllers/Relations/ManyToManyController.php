@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Relations;
 
 use App\Http\Controllers\Controller;
+use App\Model\Country;
 use App\Model\Doctor;
+use App\Model\Patient;
 use App\Model\Service;
 use Illuminate\Http\Request;
 
@@ -40,6 +42,24 @@ class ManyToManyController extends Controller
         $doctor->services()->syncWithoutDetaching($request->service_id);//Append new records without deleting the old Data
        return 'success';
     }
+
+    public function getDoctorFollowing(){
+        // 3 Tables  2 just connected >> hasOneThrough
+            $patient=Patient::find(2);
+            return $patient->doctor;
+    }
+
+    public function DoctorsOfCountry(){
+        $country=Country::find(1);
+        return $country->doctors;
+    }
+
+    public function ShowCountryOfDoctor(){
+        $patient=Patient::find(2);
+        return $patient->doctor;
+    }
+
+
 
 
 

@@ -18,6 +18,7 @@ class CreateDoctorsTable extends Migration
             $table->string('name');
             $table->string('title');
             $table->integer('hospital_id')->unsigned();
+            $table->integer('medicalFile_id')->unsigned();
             $table->timestamps();
         });
     }

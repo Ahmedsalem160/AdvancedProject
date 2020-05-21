@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Hospital extends Model
 {
-    protected $fillable=['address','name'];
-
+    protected $fillable=['address','name','country_id'];
+    protected $hidden=['created_at','updated_at'];
 
     ######################## Begin Relations ###############################
     public function doctors(){// forign key cannot be written

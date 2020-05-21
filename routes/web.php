@@ -98,5 +98,11 @@ Route::group(['namespace'=>'Relations'],function (){
     Route::get('show-doctor-services/{doctor_id}','ManyToManyController@showDoctorServices')->name('show.doctor.services');
     Route::post('AddServices-to-doctor','ManyToManyController@saveServicesToDotor')->name('save.services.ToDoctor');
 ############################ END Many To Many Relations  ###########################
+
+############################ Begin hasOneThrough && hasManyThrouhg Relations  ###########################
+    Route::get('doctors-that-follow-patient','ManyToManyController@getDoctorFollowing');
+    Route::get('doctors-that-live-in-country','ManyToManyController@DoctorsOfCountry');
+    Route::get('show-country-Doctors','ManyToManyController@ShowCountryOfDoctor');
+############################ END has one through Relations  ###########################
 });
 ################################## END Relation Routes ######################################
