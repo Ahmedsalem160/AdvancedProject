@@ -11,6 +11,8 @@
 |
 */
 
+define('PAGINATION_COUNT','3');
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -39,6 +41,9 @@ Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['lo
         Route::get('delete/{offer_id}', 'CrudController@deleteOffer')->name('offers.delete');
 
         Route::get('showAllOffers','CrudController@showAll');
+        Route::get('showAllOffers-pagination','CrudController@showOffersPagination');
+        Route::get('getAllInactiveOffers','CrudController@getAllInactiveOffers');
+        Route::get('getAllInactiveOffers-GlobalScope','CrudController@getInactiveOffers_GlobalScope');
     });
 
     Route::get('youtube','CrudController@getVideo')->middleware('auth');
@@ -106,3 +111,8 @@ Route::group(['namespace'=>'Relations'],function (){
 ############################ END has one through Relations  ###########################
 });
 ################################## END Relation Routes ######################################
+
+###########################Begin accessores && mutators##################################
+Route::get('accessors','Relations\hasManyController@getDoctors');
+Route::get('accessor','Relations\hasManyController@getDoctors');
+###########################END   accessores && mutators##################################

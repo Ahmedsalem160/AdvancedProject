@@ -91,6 +91,15 @@ class CrudController extends Controller
         return view('offers.showAll',compact('offers'));
     }
 
+    //showAll Offers Using Pagination To Avoid the Loading if the content very large
+    public function showOffersPagination(){
+        $offers = Offer::select('id',
+            'name_'.LaravelLocalization::getCurrentLocale() . ' as name',
+            'details_'.LaravelLocalization::getCurrentLocale() . ' as details',
+            'price')->paginate(PAGINATION_COUNT);
+        return view('offers.showOfferPaginate',compact('offers'));
+    }
+
     public function editOffer($offer_id){ // I can recieve the id with any varname
         Offer::findOrFail($offer_id);
         $offer = Offer::select('id','name_ar','name_en','details_ar','details_en','price')->find($offer_id);
@@ -121,5 +130,19 @@ class CrudController extends Controller
         event(new VideoViewer($video));// fire Event
         return view('video')->with('video',$video);
     }
+############################Local scopes###########################
+    public function getAllInactiveOffers(){
+        return Offer::InactiveStatus()->get();
+    }
+
+###################################################################
+############################Global scopes###########################
+// offer has global scope
+    public function getInactiveOffers_GlobalScope(){
+        return $offer=Offer::get();
+    }
+
+###################################################################
+
 }
 

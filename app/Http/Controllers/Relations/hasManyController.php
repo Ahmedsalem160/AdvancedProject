@@ -50,4 +50,17 @@ class hasManyController extends Controller
         $hospital->delete();
         return redirect()->route('hospitals.all');
     }
+    //accessors
+    public function getDoctors(){
+        $doctors= Doctor::select('id','name','gender')->get();
+        /*
+        if (isset($doctors) && $doctors->count()>0){
+            foreach ($doctors as $doctor){
+                $doctor->gender = $doctor->gender == 1 ?'male':'female';
+            }
+            return $doctors;
+        }else{return "Not Found";}
+        */
+        return $doctors;
+    }
 }

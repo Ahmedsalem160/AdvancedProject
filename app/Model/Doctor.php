@@ -24,4 +24,13 @@ class Doctor extends Model
         return $this->hasManyThrough('App\Model\Country','App\Model\Hospital','hospital_id','country_id');
     }
     ######################## END Relations ##################################
+
+###########################Begin accessors && mutators##################################
+//accessors    >> get   >>process on getting Attributes from DB
+// the Function Name Overloaded >>get_NameOfAttribute_Attribute
+public function getGenderAttribute($val){
+        return $val==1?'male':'female';
+}
+
+###########################END   accessors && mutators##################################
 }
